@@ -16,7 +16,7 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null 
 RUN sudo apt-get update && sudo apt-get install -y \ 
     docker.io docker-compose docker-compose-plugin 
-RUN sudo usermod -aG docker $USER 
+RUN sudo usermod -R docker $USER 
    \
 RUN sudo systemctl unmask docker
 RUN sudo systemctl start docker
