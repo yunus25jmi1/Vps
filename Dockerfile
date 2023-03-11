@@ -14,7 +14,6 @@ RUN apt install -y \
 RUN wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -O /ngrok-stable-linux-amd64.zip\
     && cd / && unzip ngrok-stable-linux-amd64.zip \
     && chmod +x ngrok 
-RUN tmux  \    
 RUN mkdir /run/sshd \
     && echo "/ngrok tcp --authtoken ${NGROK_TOKEN} --region ${REGION} 22 &" >>/openssh.sh \
     && echo "sleep 5" >> /openssh.sh \
@@ -24,4 +23,5 @@ RUN mkdir /run/sshd \
     && echo root:Yunus2512|chpasswd \
     && chmod 755 /openssh.sh 
 EXPOSE 80 443 3306 4040 5432 5700 5701 5010 6800 6900 8080 8888 9000 7800 3000 80
+RUN tmux  \
 CMD /openssh.sh
