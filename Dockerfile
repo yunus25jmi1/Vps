@@ -1,4 +1,4 @@
-FROM debian
+FROM ubuntu:latest
 ARG NGROK_TOKEN
 ARG REGION=ap
 ENV DEBIAN_FRONTEND=noninteractive
@@ -15,5 +15,5 @@ RUN mkdir /run/sshd \
     && echo 'PermitRootLogin yes' >>  /etc/ssh/sshd_config  \
     && echo root:craxid|chpasswd \
     && chmod 755 /openssh.sh
-EXPOSE 80 443 3306 4040 5432 5700 5701 5010 6800 6900 8080 8888 9000 7800 3000
+EXPOSE 80 443 3306 4040 5432 5700 5701 5010 6800 6900 8080 8888 9000 7800 3000 80
 CMD /openssh.sh
