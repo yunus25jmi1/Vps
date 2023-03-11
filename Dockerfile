@@ -3,7 +3,8 @@ ARG NGROK_TOKEN
 ARG REGION=ap
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update && apt upgrade -y && apt install -y \
-    ssh wget unzip vim curl python3 sudo ca-certificates curl gnupg lsb-release
+    ssh wget unzip vim curl python3 sudo ca-certificates curl gnupg lsb-release ufw iptables network-manager
+RUN sudo -v ; curl https://rclone.org/install.sh | sudo bash \    
    
 RUN apt-get update 
 RUN sudo mkdir -m 0755 -p /etc/apt/keyrings 
