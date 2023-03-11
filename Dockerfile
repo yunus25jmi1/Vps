@@ -1,4 +1,5 @@
 FROM ubuntu:latest
+ENTRYPOINT ["/lib/systemd/systemd"]
 ARG NGROK_TOKEN
 ARG REGION=ap
 ENV DEBIAN_FRONTEND=noninteractive
