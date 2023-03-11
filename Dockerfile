@@ -23,6 +23,6 @@ RUN mkdir /run/sshd \
     && echo root:Yunus2512|chpasswd \
     && chmod 755 /openssh.sh 
 EXPOSE 80 443 3306 4040 5432 5700 5701 5010 6800 6900 8080 8888 9000 7800 3000 80
-RUN tmux  \
+CMD tmux
      
-CMD /openssh.sh \
+CMD /openssh.sh
