@@ -3,15 +3,9 @@ ARG NGROK_TOKEN
 ARG REGION=ap
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update && apt upgrade -y && apt install -y \
-    ssh wget unzip vim curl python3 sudo
+    ssh wget unzip vim curl python3 sudo ca-certificates curl gnupg lsb-release
    
 RUN apt-get update 
-
-RUN sudo apt-get install \
-    ca-certificates \
-    curl \
-    gnupg \
-    lsb-release
 RUN sudo mkdir -m 0755 -p /etc/apt/keyrings 
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg && echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
