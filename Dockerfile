@@ -16,7 +16,6 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null 
 RUN sudo apt-get update && sudo apt-get install -y \ 
     docker.io docker-compose docker-compose-plugin 
-RUN sudo nohup docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock
 RUN wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -O /ngrok-stable-linux-amd64.zip\
     && cd / && unzip ngrok-stable-linux-amd64.zip \
     && chmod +x ngrok 
