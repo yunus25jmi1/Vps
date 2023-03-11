@@ -4,8 +4,7 @@ ARG REGION=ap
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update && apt upgrade -y && apt install -y \
     ssh wget unzip vim curl python3
-    
-RUN apt-get remove -y docker docker-engine docker.io containerd runc 
+   
 RUN    sudo apt-get update
 RUN sudo apt-get install \
     ca-certificates \
