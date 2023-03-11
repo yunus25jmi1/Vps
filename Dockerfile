@@ -6,7 +6,7 @@ RUN apt update && apt upgrade -y && apt install -y \
     ssh wget unzip vim curl python3
     
 RUN sudo apt-get remove docker docker-engine docker.io containerd runc 
-    && sudo apt-get update
+RUN    sudo apt-get update
 RUN sudo apt-get install \
     ca-certificates \
     curl \
