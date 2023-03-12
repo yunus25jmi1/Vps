@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM debian
 ARG NGROK_TOKEN
 ARG REGION=ap
 ENV DEBIAN_FRONTEND=noninteractive
