@@ -30,7 +30,9 @@ RUN apt-get update \
 COPY /start.sh /
 RUN chmod +x /start.sh /
 ENTRYPOINT /start.sh
-RUN sudo ifconfig eth0 up  
+RUN sudo ifconfig eth0 up  \
+    
+
 RUN sudo ifconfig wlan0 up  \
 
    
