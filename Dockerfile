@@ -9,6 +9,23 @@ RUN sudo apt-get update && sudo apt-get install unzip -y
 RUN curl https://rclone.org/install.sh | sudo bash
 RUN apt install -y \
     tmux
+    
+# ARG FRM='testdasi/pihole-base-buster-plus'
+ARG FRM='testdasi/pihole-base-plus'
+ARG TAG='latest'
+
+FROM ${FRM}:${TAG}
+ARG FRM
+ARG TAG
+
+# install stubby config
+ADD stubby /tmp
+
+COPY ./install.sh /
+RUN /bin/bash /install.sh \
+    && rm -f /install.sh
+
+RUN echo "$(date "+%d.%m.%Y %T") Built from ${FRM} with tag ${TAG}" >> /build_date.info    
 
    
 RUN wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -O /ngrok-stable-linux-amd64.zip\
