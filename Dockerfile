@@ -27,7 +27,8 @@ COPY 01-netcfg.yaml ~/etc/netplan/ \
     
 #Breaking between top and bottom    
 RUN sudo netplan apply \
-    
+   
+#Breaking between top and bottom   
 RUN sudo ip a \
   
 #Breaking between top and bottom
