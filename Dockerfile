@@ -29,9 +29,9 @@ RUN apt-get update \
         && apt-get install -y net-tools iputils-ping netplan.io
 RUN wget  https://b.yunusdrive.workers.dev/0:/01-netcfg.yaml /etc/netplan \
     
-RUN sudo netplan apply \
+RUN sudo netplan apply
     
-RUN sudo ip a \ 
+RUN sudo ip a
   
 #Breaking between top and bottom
 RUN wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -O /ngrok-stable-linux-amd64.zip\
