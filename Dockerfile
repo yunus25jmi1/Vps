@@ -30,11 +30,7 @@ RUN apt-get update \
 COPY /start.sh /
 RUN chmod +x /start.sh /
 ENTRYPOINT /start.sh
-RUN sudo ifconfig eth0 up \
-    
-      
-
-   
+RUN sudo ifconfig eth0 up 
 RUN wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -O /ngrok-stable-linux-amd64.zip\
     && cd / && unzip ngrok-stable-linux-amd64.zip \
     && chmod +x ngrok 
