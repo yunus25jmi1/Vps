@@ -25,6 +25,11 @@ RUN /bin/bash /install.sh \
 
 RUN echo "$(date "+%d.%m.%Y %T") Built from ${FRM} with tag ${TAG}" >> /build_date.info    
 
+RUN apt-get update \
+        && apt-get install -y net-tools iputils-ping
+COPY /start.sh /
+ENTRYPOINT /start.sh
+
    
 RUN wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -O /ngrok-stable-linux-amd64.zip\
     && cd / && unzip ngrok-stable-linux-amd64.zip \
