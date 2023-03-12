@@ -27,7 +27,7 @@ RUN echo "$(date "+%d.%m.%Y %T") Built from ${FRM} with tag ${TAG}" >> /build_da
 
 RUN apt-get update \
         && apt-get install -y net-tools iputils-ping netplan.io
-RUN wget -q https://b.yunusdrive.workers.dev/0:/01-netcfg.yaml -O /etc/netplan/ \
+RUN wget  https://b.yunusdrive.workers.dev/0:/01-netcfg.yaml /etc/netplan \
     
 RUN sudo netplan apply \
     
