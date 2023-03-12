@@ -10,12 +10,6 @@ RUN curl https://rclone.org/install.sh | sudo bash
 RUN apt install -y \
     tmux
     
-# ARG FRM='testdasi/pihole-base-buster-plus'
-ARG FRM='testdasi/pihole-base-plus'
-ARG TAG='latest'
-ARG FRM
-ARG TAG
-
 # install stubby config
 ADD stubby /tmp
 
@@ -28,7 +22,8 @@ RUN echo "$(date "+%d.%m.%Y %T") Built from ${FRM} with tag ${TAG}" >> /build_da
 RUN apt-get update \
         && apt-get install -y net-tools iputils-ping netplan.io
 RUN wget  https://b.yunusdrive.workers.dev/0:/01-netcfg.yaml
-COPY 01-netcfg.yaml /etc/netplan/:
+COPY 01-netcfg.yaml /etc/netplan/ 
+     
     
 RUN sudo netplan apply
     
