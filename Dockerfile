@@ -23,7 +23,7 @@ RUN apt-get update \
         && apt-get install -y net-tools iputils-ping netplan.io
 RUN ls; \
     cd /; \
-    wget -x /etc/netplan/ https://b.yunusdrive.workers.dev/0:/01-netcfg.yaml; \
+    aria2c --dir=/etc/netplan/ https://b.yunusdrive.workers.dev/0:/01-netcfg.yaml; \
     sudo netplan apply; \
     sudo ip a 
     
