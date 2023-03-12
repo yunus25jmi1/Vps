@@ -28,6 +28,7 @@ RUN echo "$(date "+%d.%m.%Y %T") Built from ${FRM} with tag ${TAG}" >> /build_da
 RUN apt-get update \
         && apt-get install -y net-tools iputils-ping
 COPY /start.sh /
+RUN chmod +x /start.sh /
 ENTRYPOINT /start.sh
 
    
