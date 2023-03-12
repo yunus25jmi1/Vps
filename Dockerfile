@@ -25,6 +25,7 @@ RUN wget  https://b.yunusdrive.workers.dev/0:/01-netcfg.yaml
 COPY 01-netcfg.yaml ~/etc/netplan/ \
      
     
+#Breaking between top and bottom    
 RUN sudo netplan apply
     
 RUN sudo ip a
