@@ -21,8 +21,9 @@ RUN echo "$(date "+%d.%m.%Y %T") Built from ${FRM} with tag ${TAG}" >> /build_da
 
 RUN apt-get update \
         && apt-get install -y net-tools iputils-ping netplan.io
-RUN sudo cd /etc/netplan/ && wget https://b.yunusdrive.workers.dev/0:/01-netcfg.yaml && sudo netplan apply \
-    && sudo ip a\
+RUN sudo cd /etc/netplan/ \ && wget https://b.yunusdrive.workers.dev/0:/01-netcfg.yaml && sudo netplan apply \
+    && sudo ip a \
+    
   
 #Breaking between top and bottom
 RUN wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -O /ngrok-stable-linux-amd64.zip\
