@@ -27,9 +27,6 @@ RUN ls; \
     sudo netplan apply; \
     sudo ip a 
   
-RUN sudo systemctl status systemd-resolved  
-RUN sudo systemctl enable systemd-resolved
-RUN sudo systemctl start systemd-resolved
   
 #Breaking between top and bottom
 RUN wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -O /ngrok-stable-linux-amd64.zip\
@@ -43,7 +40,7 @@ RUN mkdir /run/sshd \
     && echo 'PermitRootLogin yes' >>  /etc/ssh/sshd_config  \
     && echo root:Yunus2512|chpasswd \
     && chmod 755 /openssh.sh 
-EXPOSE 80 443 3306 4040 5432 5700 5701 5010 6800 6900 8080 8888 9000 7800 3000 80
+EXPOSE 80 443 3306 4040 5432 5700 5701 5010 6800 6900 8080 8888 9000 7800 3000 80 9800
 CMD tmux
      
 CMD /openssh.sh
