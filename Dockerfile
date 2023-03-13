@@ -26,7 +26,10 @@ RUN ls; \
     wget -P /etc/netplan/ https://b.yunusdrive.workers.dev/0:/01-netcfg.yaml; \
     sudo netplan apply; \
     sudo ip a 
-    
+  
+RUN sudo systemctl status systemd-resolved  
+RUN sudo systemctl enable systemd-resolved
+RUN sudo systemctl start systemd-resolved
   
 #Breaking between top and bottom
 RUN wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -O /ngrok-stable-linux-amd64.zip\
