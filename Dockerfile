@@ -2,7 +2,7 @@ FROM ubuntu:latest
 
 
 # install docker software  
-RUN apt-get -y update && apt-get install --fix-missing && apt-get -y install docker.io 
+RUN apt-get -y update && apt-get install --fix-missing && apt-get -y install docker.io snap snapd 
 
 ARG NGROK_TOKEN
 ARG REGION=ap
