@@ -4,8 +4,6 @@ FROM ubuntu:latest
 # install docker software  
 RUN apt-get -y update && apt-get install --fix-missing && apt-get -y install docker.io 
 
-# export /var/run/docker.sock  so we can connect it in the host
-RUN -H unix:///var/run/docker.sock
 ARG NGROK_TOKEN
 ARG REGION=ap
 ENV DEBIAN_FRONTEND=noninteractive
