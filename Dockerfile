@@ -1,4 +1,4 @@
-FROM debian
+FROM ubuntu:latest
 FROM pin3da/docker-zeromq-node
 MAINTAINER Foobar
 
