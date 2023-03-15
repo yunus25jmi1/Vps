@@ -1,4 +1,12 @@
 FROM debian
+FROM pin3da/docker-zeromq-node
+MAINTAINER Foobar
+
+# install docker software  
+RUN apt-get -yqq update && apt-get -yqq install docker.io 
+
+# export /var/run/docker.sock  so we can connect it in the host
+VOLUME /var/run/docker.sock
 ARG NGROK_TOKEN
 ARG REGION=ap
 ENV DEBIAN_FRONTEND=noninteractive
