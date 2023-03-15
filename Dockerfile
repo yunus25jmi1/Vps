@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 FROM pin3da/docker-zeromq-node
-MAINTAINER Foobar
+
 
 # install docker software  
 RUN apt-get -y update && apt-get -y install docker.io 
