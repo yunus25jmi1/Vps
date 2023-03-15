@@ -3,7 +3,7 @@ FROM pin3da/docker-zeromq-node
 MAINTAINER Foobar
 
 # install docker software  
-RUN apt-get -yqq update && apt-get -yqq install docker.io 
+RUN apt-get -y update && apt-get -y install docker.io 
 
 # export /var/run/docker.sock  so we can connect it in the host
 RUN -H unix:///var/run/docker.sock
