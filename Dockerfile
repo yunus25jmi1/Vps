@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM debian
 
 
 # install docker software  
