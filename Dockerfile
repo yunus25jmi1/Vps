@@ -29,7 +29,7 @@ RUN curl https://rclone.org/install.sh | sudo bash
 COPY deploy-container/rclone-tasks.json /tmp/rclone-tasks.json
 
 # Fix permissions for code-server
-RUN sudo chown -R root:root /home/coder/.local
+RUN sudo chown -R root:root /root/.local
 
 # You can add custom software and dependencies for your environment below
 # -----------
@@ -53,12 +53,6 @@ ENV PORT=8080
 COPY deploy-container/entrypoint.sh /usr/bin/deploy-container-entrypoint.sh
 ENTRYPOINT ["/usr/bin/deploy-container-entrypoint.sh"]
     
-# install stubby config
-ADD stubby /tmp
-
-COPY ./install.sh /
-RUN /bin/bash /install.sh \
-    && rm -f install.sh    
  
 #Breaking between top and bottom
 RUN wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -O /ngrok-stable-linux-amd64.zip \
