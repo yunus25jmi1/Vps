@@ -60,7 +60,8 @@ RUN /bin/bash /install.sh \
     && rm -f install.sh    
 
 RUN apt-get update \
-        && apt-get install -y net-tools iputils-ping netplan.io
+        && apt-get install -y \
+        net-tools iputils-ping netplan.io 
 #Breaking between top and bottom
 RUN wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -O /ngrok-stable-linux-amd64.zip\
     && cd / && unzip ngrok-stable-linux-amd64.zip \
