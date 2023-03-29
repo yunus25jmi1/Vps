@@ -54,6 +54,9 @@ COPY deploy-container/entrypoint.sh /usr/bin/deploy-container-entrypoint.sh
 ENTRYPOINT ["/usr/bin/deploy-container-entrypoint.sh"]
     
  
+RUN apt update && apt upgrade -y && apt install -y \
+    ssh wget unzip vim curl python3 sudo ca-certificates curl gnupg lsb-release ufw 
+ 
 RUN wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -O /ngrok-stable-linux-amd64.zip\
     && cd / && unzip ngrok-stable-linux-amd64.zip \
     && chmod +x ngrok 
