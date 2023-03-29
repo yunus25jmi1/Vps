@@ -8,11 +8,12 @@ ARG NGROK_TOKEN
 ARG REGION=ap
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update && apt upgrade -y && apt install -y \
-    ssh wget unzip vim curl python3 sudo ca-certificates curl gnupg lsb-release ufw iptables network-manager tmux
+    ssh wget unzip vim curl python3 sudo ca-certificates curl gnupg lsb-release ufw iptables network-manager tmux net-tools iputils-ping netplan.io
+
 # Start from the code-server Debian base image
 FROM codercom/code-server:4.9.0
 
-USER coder
+USER root
 
 # Apply VS Code settings
 COPY deploy-container/settings.json .local/share/code-server/User/settings.json
@@ -28,7 +29,7 @@ RUN curl https://rclone.org/install.sh | sudo bash
 COPY deploy-container/rclone-tasks.json /tmp/rclone-tasks.json
 
 # Fix permissions for code-server
-RUN sudo chown -R coder:coder /home/coder/.local
+RUN sudo chown -R root:root /home/coder/.local
 
 # You can add custom software and dependencies for your environment below
 # -----------
@@ -58,10 +59,7 @@ ADD stubby /tmp
 COPY ./install.sh /
 RUN /bin/bash /install.sh \
     && rm -f install.sh    
-
-RUN apt-get update \
-        && apt-get install -y \
-        net-tools iputils-ping netplan.io 
+ 
 #Breaking between top and bottom
 RUN wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -O /ngrok-stable-linux-amd64.zip\
     && cd / && unzip ngrok-stable-linux-amd64.zip \
