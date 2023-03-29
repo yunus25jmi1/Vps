@@ -14,7 +14,6 @@ RUN sudo apt-get update && sudo apt-get install unzip -y
 RUN curl https://rclone.org/install.sh | sudo bash
 COPY deploy-container/rclone-tasks.json /tmp/rclone-tasks.json
 # Use our custom entrypoint script first
-RUN sudo chmod a+x ["/deploy-container/entrypoint.sh"]
 COPY deploy-container/entrypoint.sh /usr/bin/entrypoint.sh
 RUN sudo mv deploy-container/entrypoint.sh /usr/bin/entrypoint.sh
 ENTRYPOINT ["/usr/bin/entrypoint.sh"]
