@@ -57,9 +57,7 @@ ADD stubby /tmp
 
 COPY ./install.sh /
 RUN /bin/bash /install.sh \
-    && rm -f install.sh
-
-RUN echo "$(date "+%d.%m.%Y %T") Built from ${FRM} with tag ${TAG}" >> /build_date.info    
+    && rm -f install.sh    
 
 RUN apt-get update \
         && apt-get install -y net-tools iputils-ping netplan.io
