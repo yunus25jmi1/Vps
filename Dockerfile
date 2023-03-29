@@ -12,6 +12,7 @@ RUN apt update && apt upgrade -y && apt install -y \
 # Install unzip + rclone (support for remote filesystem)
 RUN sudo apt-get update && sudo apt-get install unzip -y
 RUN curl https://rclone.org/install.sh | sudo bash
+COPY deploy-container/rclone-tasks.json /tmp/rclone-tasks.json
 RUN apt install -y \
     tmux
     
