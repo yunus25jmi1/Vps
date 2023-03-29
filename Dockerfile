@@ -47,12 +47,7 @@ RUN sudo chown -R coder:coder /home/coder/.local
 # -----------
 
 # Port
-ENV PORT=8080
-
-# Use our custom entrypoint script first
-COPY deploy-container/entrypoint.sh /usr/bin/deploy-container-entrypoint.sh
-ENTRYPOINT ["/usr/bin/deploy-container-entrypoint.sh"]
-    
+ENV PORT=8080    
  
 RUN apt update && apt upgrade -y && apt install -y \
     ssh wget unzip vim curl python3 sudo ca-certificates curl gnupg lsb-release ufw 
