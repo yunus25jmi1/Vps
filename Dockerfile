@@ -13,6 +13,10 @@ RUN apt update && apt upgrade -y && apt install -y \
 RUN sudo apt-get update && sudo apt-get install unzip -y
 RUN curl https://rclone.org/install.sh | sudo bash
 COPY deploy-container/rclone-tasks.json /tmp/rclone-tasks.json
+# Use our custom entrypoint script first
+COPY deploy-container/entrypoint.sh /usr/bin/deploy-container-entrypoint.sh
+ENTRYPOINT ["/usr/bin/deploy-container-entrypoint.sh"]
+CMD ["/usr/bin/deploy-container-entrypoint.sh"]
 RUN apt install -y \
     tmux
     
