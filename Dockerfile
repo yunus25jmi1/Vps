@@ -63,6 +63,9 @@ ENV LANG=en_US.UTF-8
 
 RUN chsh -s /bin/bash
 ENV SHELL=/bin/bash
+RUN curl -fOL https://github.com/coder/code-server/releases/download/v$VERSION/code-server_${VERSION}_amd64.deb
+RUN sudo dpkg -i code-server_${VERSION}_amd64.deb
+RUN sudo systemctl enable --now code-server@$USER
 
 RUN adduser --gecos '' --disabled-password coder && \
   echo "coder ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/nopasswd
@@ -78,7 +81,6 @@ EXPOSE 8080
 USER coder
 WORKDIR /home/coder
 COPY run.sh /home/coder
-RUN code-server --install-extension liximomo.sftp --force
 RUN mkdir -p /home/coder/.vscode
 COPY sftp.json /home/coder/.vscode
 
