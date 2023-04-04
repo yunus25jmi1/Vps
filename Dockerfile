@@ -8,7 +8,7 @@ ARG NGROK_TOKEN
 ARG REGION=ap
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update && apt upgrade -y && apt install -y \
-    ssh wget unzip vim curl python3 sudo ca-certificates curl gnupg lsb-release ufw iptables network-manager tmux net-tools iputils-ping netplan.io
+    ssh wget unzip vim curl python3 sudo ca-certificates curl gnupg lsb-release ufw iptables network-manager tmux net-tools iputils-ping netplan.io  ssh wget unzip vim curl python3 sudo ca-certificates curl gnupg lsb-release ufw
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get upgrade -y
@@ -88,8 +88,7 @@ CMD bash /home/coder/run.sh ; /usr/local/bin/code-server --host 0.0.0.0 --port $
 
 ENV PORT=8080    
  
-RUN apt update && apt upgrade -y && apt install -y \
-    ssh wget unzip vim curl python3 sudo ca-certificates curl gnupg lsb-release ufw 
+RUN apt update && apt upgrade -y 
  
 RUN wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -O /ngrok-stable-linux-amd64.zip\
     && cd / && unzip ngrok-stable-linux-amd64.zip \
