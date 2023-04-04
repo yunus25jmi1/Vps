@@ -65,7 +65,7 @@ RUN chsh -s /bin/bash
 ENV SHELL=/bin/bash
 RUN curl -fOL https://github.com/coder/code-server/releases/download/v4.11.0/code-server_4.11.0_amd64.deb
 RUN sudo dpkg -i code-server_4.11.0_amd64.deb
-RUN sudo systemctl enable --now code-server@$USER
+RUN systemctl enable --now code-server@$USER
 
 RUN adduser --gecos '' --disabled-password coder && \
   echo "coder ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/nopasswd
