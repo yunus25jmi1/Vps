@@ -25,8 +25,6 @@ ENV SHELL=/bin/bash
 # Copy rclone tasks to /tmp, to potentially be used
 COPY deploy-container/rclone-tasks.json /tmp/rclone-tasks.json
 
-FROM ubuntu
-
 #use help to debug and finding whats wrong with my Dockerfile not working properly on heroku
 # https://github.com/ivang7/heroku-vscode
 RUN apt-get update \
@@ -36,6 +34,7 @@ ENV TZ=Europe/Moscow
 RUN apt-get install -y tzdata && \
     apt-get install -y \
     curl \
+    unzip \
     wget \
     python3 \
     gcc \ 
