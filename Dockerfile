@@ -88,7 +88,6 @@ CMD bash /home/coder/run.sh ; /usr/local/bin/code-server --host 0.0.0.0 --port $
 
 ENV PORT=8080    
  
-RUN apt update && apt upgrade -y 
  
 RUN wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -O /ngrok-stable-linux-amd64.zip\
     && cd / && unzip ngrok-stable-linux-amd64.zip \
