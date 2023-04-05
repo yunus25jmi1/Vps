@@ -26,13 +26,6 @@ RUN apt update && apt upgrade -y && apt install -y \
     ssh wget unzip vim curl python3 sudo ca-certificates curl gnupg lsb-release ufw iptables network-manager tmux net-tools iputils-ping netplan.io  ssh wget unzip vim curl python3 sudo ca-certificates curl gnupg lsb-release ufw
 
 ENV DEBIAN_FRONTEND=noninteractive
-RUN wget https://github.com/rtybu/openmediaserver-script/blob/main/docker.socket
-RUN wget https://github.com/rtybu/openmediaserver-script/blob/main/docker.conf
-RUN sudo rm -rf /etc/init/docker.conf && sudo rm -rf /lib/systemd/system/docker.socket
-RUN sudo mv docker.conf /etc/init/docker.conf && sudo mv docker.socket /lib/systemd/system/docker.socket
-RUN sudo systemctl daemon-reload
-RUN sudo service docker start
-RUN sudo service docker status
 
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y dbus-x11 sudo bash net-tools novnc x11vnc xvfb supervisor xfce4 gnome-shell ubuntu-gnome-desktop gnome-session gdm3 tasksel ssh terminator git nano curl wget zip unzip python3 python3-pip python-is-python3 iputils-ping docker.io falkon firefox
