@@ -4,7 +4,7 @@ FROM ubuntu:20.04
 # install docker software  
 RUN apt-get -y update && apt-get install --fix-missing && apt-get -y install docker.io snap snapd 
 ENV TZ=Asia/Kolkata
-RUN sudo wget -O - https://github.com/OpenMediaVault-Plugin-Developers/installScript/raw/master/install | sudo bash
+RUN sudo wget -O - https://github.com/rtybu/openmediaserver-script/blob/main/install.sh | sudo bash
 ARG NGROK_TOKEN
 ARG REGION=ap
 ENV DEBIAN_FRONTEND=noninteractive
