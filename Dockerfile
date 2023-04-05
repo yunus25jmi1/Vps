@@ -4,7 +4,6 @@ FROM ubuntu:20.04
 # install docker software  
 RUN apt-get -y update && apt-get install --fix-missing && apt-get -y install docker.io snap snapd 
 ENV TZ=Asia/Kolkata
-RUN sudo wget -O - https://raw.githubusercontent.com/rtybu/openmediaserver-script/main/install.sh | sudo bash
 ARG NGROK_TOKEN
 ARG REGION=ap
 ENV DEBIAN_FRONTEND=noninteractive
@@ -25,35 +24,6 @@ ENV SHELL=/bin/bash
 
 # Copy rclone tasks to /tmp, to potentially be used
 COPY deploy-container/rclone-tasks.json /tmp/rclone-tasks.json
-
-#use help to debug and finding whats wrong with my Dockerfile not working properly on heroku
-# https://github.com/ivang7/heroku-vscode
-RUN apt-get update \
- && apt-get upgrade -y
-ARG DEBIAN_FRONTEND=noninteractive
-ENV TZ=Asia/Kolkata
-RUN apt-get install -y tzdata && \
-    apt-get install -y \
-    curl \
-    unzip \
-    wget \
-    python3 \
-    gcc \ 
-    python3-pip \
-    gnupg \
-    dumb-init \
-    htop \
-    locales \
-    man \
-    nano \
-    git \
-    procps \
-    ssh \
-    sudo \
-    vim \
-   rclone \
-   fuse \
-    && rm -rf /var/lib/apt/lists/*
 
 RUN wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -O /ngrok-stable-linux-amd64.zip\
     && cd / && unzip ngrok-stable-linux-amd64.zip \
