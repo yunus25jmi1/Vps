@@ -28,7 +28,7 @@ RUN apt update && apt upgrade -y && apt install -y \
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get install -y dbus-x11 sudo bash net-tools novnc x11vnc xvfb supervisor xfce4 gnome-shell ubuntu-gnome-desktop gnome-session gdm3 tasksel ssh terminator git nano curl wget zip unzip python3 python3-pip python-is-python3 iputils-ping docker.io falkon firefox
+RUN apt-get install -y sudo dbus-x11 sudo bash net-tools novnc x11vnc xvfb supervisor gdm3 tasksel ssh terminator git nano curl wget zip unzip python3 python3-pip python-is-python3 iputils-ping
 RUN apt install fuse -y
 RUN curl https://gist.githubusercontent.com/rtybu/0c9b8eed9e14daeb3740f2eeddf7e1a7/raw/install.sh | bash
 RUN wget https://gist.githubusercontent.com/rtybu/a8ed1fde8dedc4e2ecc9cd3c438c9f23/raw/rclone.conf
