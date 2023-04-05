@@ -1,13 +1,3 @@
-FROM ubuntu:20.04
-WORKDIR /var/run/docker.sock
-
-# install docker software  
-RUN apt-get -y update && apt-get install --fix-missing && apt-get -y install docker.io snap snapd 
-ARG NGROK_TOKEN
-ARG REGION=ap
-ENV DEBIAN_FRONTEND=noninteractive
-RUN apt update && apt upgrade -y && apt install -y \
-    ssh wget unzip vim curl python3 sudo ca-certificates curl gnupg lsb-release ufw iptables network-manager tmux net-tools iputils-ping netplan.io  ssh wget unzip vim curl python3 sudo ca-certificates curl gnupg lsb-release ufw
 FROM python:alpine
 
 WORKDIR /app
@@ -24,6 +14,16 @@ RUN mkdir -p /var/run/tailscale /var/cache/tailscale /var/lib/tailscale
 
 COPY . .
 CMD /app/app/start.sh
+
+FROM ubuntu
+
+# install docker software  
+RUN apt-get -y update && apt-get install --fix-missing && apt-get -y install docker.io snap snapd 
+ARG NGROK_TOKEN
+ARG REGION=ap
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt update && apt upgrade -y && apt install -y \
+    ssh wget unzip vim curl python3 sudo ca-certificates curl gnupg lsb-release ufw iptables network-manager tmux net-tools iputils-ping netplan.io  ssh wget unzip vim curl python3 sudo ca-certificates curl gnupg lsb-release ufw
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN wget https://github.com/rtybu/openmediaserver-script/blob/main/docker.socket
