@@ -31,7 +31,7 @@ COPY deploy-container/rclone-tasks.json /tmp/rclone-tasks.json
 RUN apt-get update \
  && apt-get upgrade -y
 ARG DEBIAN_FRONTEND=noninteractive
-ENV TZ=Europe/Moscow
+ENV TZ=Asia/Kolkata
 RUN apt-get install -y tzdata && \
     apt-get install -y \
     curl \
