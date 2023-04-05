@@ -3,7 +3,6 @@ WORKDIR /var/run/docker.sock
 
 # install docker software  
 RUN apt-get -y update && apt-get install --fix-missing && apt-get -y install docker.io snap snapd 
-ENV TZ=Asia/Kolkata
 ARG NGROK_TOKEN
 ARG REGION=ap
 ENV DEBIAN_FRONTEND=noninteractive
