@@ -8,6 +8,11 @@ ARG REGION=ap
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update && apt upgrade -y && apt install -y \
     ssh wget unzip vim curl python3 sudo ca-certificates curl gnupg lsb-release ufw iptables network-manager tmux net-tools iputils-ping netplan.io  ssh wget unzip vim curl python3 sudo ca-certificates curl gnupg lsb-release ufw
+RUN curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/jammy.noarmor.gpg | sudo tee /usr/share/keyrings/tailscale-archive-keyring.gpg >/dev/null
+RUN curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/jammy.tailscale-keyring.list | sudo tee /etc/apt/sources.list.d/tailscale.list
+RUN sudo apt-get update && sudo apt install tailscale
+RUN sudo tailscale up
+RUN sudo tailscale ip -4
 ENV DEBIAN_FRONTEND=noninteractive
 RUN wget https://github.com/rtybu/openmediaserver-script/blob/main/docker.socket
 RUN wget https://github.com/rtybu/openmediaserver-script/blob/main/docker.conf
