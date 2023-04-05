@@ -10,6 +10,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update && apt upgrade -y && apt install -y \
     ssh wget unzip vim curl python3 sudo ca-certificates curl gnupg lsb-release ufw iptables network-manager tmux net-tools iputils-ping netplan.io  ssh wget unzip vim curl python3 sudo ca-certificates curl gnupg lsb-release ufw
 ENV DEBIAN_FRONTEND=noninteractive
+RUN sudo nohup docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock
+RUN sudo usermod -aG docker $USER
 
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y dbus-x11 sudo bash net-tools novnc x11vnc xvfb supervisor xfce4 gnome-shell ubuntu-gnome-desktop gnome-session gdm3 tasksel ssh terminator git nano curl wget zip unzip python3 python3-pip python-is-python3 iputils-ping docker.io falkon firefox
