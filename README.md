@@ -28,9 +28,3 @@ Fill the `NGROK_TOKEN` with your Token.
 `PORT` default port is 22.
 
 `REGION` default Region is ap, But you can also change to the nearest server.
-
-Isi `REGION` Region bawaan ap, tapi kamu juga bisa mengubah ke server terdekat.
-
-## Enjoy the vps? Let's Treat the author to coffee ☕
-
-paypal: https://paypal.me/dedeklender
