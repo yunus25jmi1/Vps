@@ -37,7 +37,8 @@ COPY deploy-container/rclone-tasks.json /tmp/rclone-tasks.json
 
 RUN wget -q https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.tgz -O /ngrok-v3-stable-linux-amd64.tgz \
   && tar -xzf ngrok-v3-stable-linux-amd64.tgz
-  && chmod +x ngrok 
+>>>   && chmod +x ngrok
+  
 RUN mkdir /run/sshd \
     && echo "/ngrok tcp --authtoken ${NGROK_TOKEN} --region ${REGION} 22 &" >>/openssh.sh \
     && echo "sleep 5" >> /openssh.sh \
